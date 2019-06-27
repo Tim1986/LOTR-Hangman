@@ -21,7 +21,8 @@ function newWord() {
     console.log(currentAnswer.length)
     answerArray.push(currentAnswer)
     console.log(answerArray)
-    currentAnswerDisplayed.textContent = currentAnswer.length
+    currentAnswerDisplayed.textContent = currentAnswer
+
     // how do I make this a string of underscores? Do I use .toString()?
 
         document.onkeyup = function(event) {

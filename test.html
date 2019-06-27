@@ -1,103 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <title>Lord of the Ring...around someone's neck!</title>
-</head>
+<html>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <p>Welcome, be ye man, elf, dwarf, or hobbit. No orcs allowed.</p>
-                <p>Press Any Key to Get Started!</p>
-                <p>Wins: <span id="wins">0</span></p>
-            </div>
-            <div class="col-6">
-                <img class="mainpic" src="assets/images/LOTRmain.jpg" alt="LOTR main image">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <p><span id="answer">Press A Key To Get a Word!</p>
-                <p>Guesses Remaining: <span id="guessesleft">10</span></p>
-                <p>Already Guessed: <span id="already-guessed">none</span></p>
-            </div>
-            <div class="col-6">
-                <!-- IMAGE OF LAST ANSWER -->
-            </div>
 
-        </div>
-    </div>
-    <script>
-    var wins = 0
-    var guesses = 12
-    var possibleAnswers = ["aragorn", "frodo", "peregrin", "meriadoc", "samwise", "legolas", "gimli", "gandalf", "boromir"]
-    var winsText = document.getElementById("wins")
-    var currentAnswerDisplayed = document.getElementById("answer")
-    var remainingGuesses = document.getElementById("guesses-left")
-    var alreadyGuessedSpan = document.getElementById("already-guessed")
-    var alreadyGuessed = []
-    var answerArray = [""]
+<p>Click the button to replace "boring" with "awesome" in the paragraph below:</p>
 
-    alreadyGuessed = []
-    guesses = 12
-    remainingGuesses.textContent = guesses;
+<p id="demo">Mr Blue has a boring house and a boring car.</p>
 
-    document.onkeyup = function(event) {
-        var currentAnswer = possibleAnswers[Math.floor(Math.random() * possibleAnswers.length)];
-        console.log(currentAnswer)
-        console.log(currentAnswer.length)
+<button onclick="replacer()">Try it</button>
 
-        currentAnswerDisplayed.textContent = currentAnswer.length
-        // how do I make this a string of underscores? Do I use .toString()?
+<script>
+function replacer() {
+  var old = document.getElementById("demo").innerHTML; 
+  var fresh = old.replace(/boring/g, "awesome");
+  document.getElementById("demo").innerHTML = fresh;
+}
+</script>
 
-        document.onkeyup = function(event) {
-            var userGuess = event.key.toLowerCase();
-           console.log(userGuess)
-
-            // maybe change this to an array with all the letters?
-            // maybe have prior if statement about whether or not the userGuess is in the alreadyGuessed array, add them to the alreadyguessed array if no, and display array in string form?
-            if ((userGuess === "a") || (userGuess === "b") || (userGuess === "c") || (userGuess === "d") || (userGuess === "e") || (userGuess === "f") || (userGuess === "g") || (userGuess === "h") || (userGuess === "i") || (userGuess === "j") || (userGuess === "k") || (userGuess === "l") || (userGuess === "m") || (userGuess === "n") || (userGuess === "o") || (userGuess === "p") || (userGuess === "q") || (userGuess === "r") || (userGuess === "s") || (userGuess === "t") || (userGuess === "u") || (userGuess === "v") || (userGuess === "w") || (userGuess === "x") || (userGuess === "y") || (userGuess === "z")
-                && (alreadyGuessed.includes(userGuess) === false)) {
-                if (currentAnswer.includes(userGuess)) {
-                    console.log("yes");
-                    // somehow replace a corresponding underscore with userGuess
-
-                    // if (missing answers === 0) {
-                        // wins++;
-                        // winsText.textContent = wins;
-                    //     newWord()
-                    // }
-
-                } else {
-                    console.log("no");
-                    guesses--;
-                    console.log(guesses);
-                    remainingGuesses.textContent = guesses;
-                    alreadyGuessed.push(userGuess)
-                    alreadyGuessedSpan.textContent = alreadyGuessed
-                    console.log(alreadyGuessed)
-                    // if (guesses === 0) {
-                    //     newWord()
-                    // }
-                    
-                
-            
-                }
-                }
-                }
-            }
-    
-    
-    </script>
 </body>
 </html>
