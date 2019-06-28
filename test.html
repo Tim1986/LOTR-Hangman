@@ -2,19 +2,27 @@
 <html>
 <body>
 
-<p>Click the button to replace "boring" with "awesome" in the paragraph below:</p>
+<p>Click the button to display a String version of the array.</p>
 
-<p id="demo">Mr Blue has a boring house and a boring car.</p>
+<button onclick="myFunction()">Try it</button>
 
-<button onclick="replacer()">Try it</button>
+<p id="demo"></p>
 
 <script>
-function replacer() {
-  var old = document.getElementById("demo").innerHTML; 
-  var fresh = old.replace(/boring/g, "awesome");
-  document.getElementById("demo").innerHTML = fresh;
+function myFunction() {
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var x = fruits.toString();
+  document.getElementById("demo").innerHTML = x;
 }
 </script>
 
 </body>
 </html>
+
+function correctGuess() {
+    // var x = answerArrayHidden.toString
+    var str = "answerArrayHidden";
+    var res = str.split(" ");
+    document.getElementById("answer").innerHTML = res
+    answerArrayHidden[j] = userGuess;            
+    }
