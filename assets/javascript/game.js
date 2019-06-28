@@ -1,3 +1,4 @@
+var beginHide = document.getElementById("begin")
 var wins = 0
 var guesses = 12
 var possibleAnswers = ["aragorn", "frodo", "peregrin", "meriadoc", "samwise", "legolas", "gimli", "gandalf", "boromir", "galadriel", "gollum", "arwen", "faramir", "elrond", "saruman", "sauron", "bilbo", "eowyn", "eomer", "theoden", "treebeard",]
@@ -10,6 +11,7 @@ var answerArrayHidden = []
 
 function newWord() {
 
+    beginHide.style.display = 'none';
     alreadyGuessed = []
     alreadyGuessedSpan.textContent = "none"
     guesses = 12
@@ -24,7 +26,7 @@ function newWord() {
         answerArrayHidden.push("_")
     }
     console.log(answerArrayHidden)
-    currentAnswerDisplayed.textContent = answerArrayHidden
+    currentAnswerDisplayed.textContent = answerArrayHidden.join("")
 
         document.onkeyup = function(event) {
             var userGuess = event.key.toLowerCase();
@@ -34,7 +36,9 @@ function newWord() {
             var str = answerArrayHidden.toString();
             var res = str.split(" ");
             document.getElementById("answer").innerHTML = res
-            answerArrayHidden[j] = userGuess;            
+            answerArrayHidden[j] = userGuess;
+            answerArrayHidden.join("")
+            console.log(answerArrayHidden)   
             }
         
             if ((userGuess === "a") || (userGuess === "b") || (userGuess === "c") || (userGuess === "d") || (userGuess === "e") || (userGuess === "f") || (userGuess === "g") || (userGuess === "h") || (userGuess === "i") || (userGuess === "j") || (userGuess === "k") || (userGuess === "l") || (userGuess === "m") || (userGuess === "n") || (userGuess === "o") || (userGuess === "p") || (userGuess === "q") || (userGuess === "r") || (userGuess === "s") || (userGuess === "t") || (userGuess === "u") || (userGuess === "v") || (userGuess === "w") || (userGuess === "x") || (userGuess === "y") || (userGuess === "z")) {
@@ -45,7 +49,7 @@ function newWord() {
                         if (currentAnswer[j] === userGuess) {
                             console.log(j)
                             correctGuess()
-                            currentAnswerDisplayed.textContent = answerArrayHidden
+                            currentAnswerDisplayed.textContent = answerArrayHidden.join("")
                         }
                     }
                         if (answerArrayHidden.includes("_") === false) {
@@ -63,10 +67,10 @@ function newWord() {
                     console.log(guesses);
                     remainingGuesses.textContent = guesses;
                     alreadyGuessed.push(userGuess)
-                    alreadyGuessedSpan.textContent = alreadyGuessed
+                    alreadyGuessedSpan.textContent = alreadyGuessed.join(" ")
                     console.log(alreadyGuessed)
                     if (guesses === 0) {
-                        var audio = new Audio("assets/images/sound_loss.wav");
+                        var audio = new Audio("assets/images/sound_loss2.wav");
                         audio.play();
                         newWord()
                     }
@@ -76,4 +80,6 @@ function newWord() {
             }
         }
 }
+document.onkeyup = function(event) {
 newWord();
+}
