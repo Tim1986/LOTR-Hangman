@@ -1,15 +1,12 @@
 var wins = 0
 var guesses = 12
-var possibleAnswers = ["aragorn", "frodo", "peregrin", "meriadoc", "samwise", "legolas", "gimli", "gandalf", "boromir"]
+var possibleAnswers = ["aragorn", "frodo", "peregrin", "meriadoc", "samwise", "legolas", "gimli", "gandalf", "boromir", "galadriel", "gollum", "arwen", "faramir", "elrond", "saruman", "sauron", "bilbo", "eowyn", "eomer", "theoden", "treebeard",]
 var winsText = document.getElementById("wins")
 var currentAnswerDisplayed = document.getElementById("answer")
 var remainingGuesses = document.getElementById("guesses-left")
 var alreadyGuessedSpan = document.getElementById("already-guessed")
 var alreadyGuessed = []
-// var answerArray = []
 var answerArrayHidden = []
-
-
 
 function newWord() {
 
@@ -22,8 +19,6 @@ function newWord() {
     var currentAnswer = possibleAnswers[Math.floor(Math.random() * possibleAnswers.length)];
     console.log(currentAnswer)
     console.log(currentAnswer.length)
-    // answerArray.push(currentAnswer)
-    // console.log(answerArray)
 
     for (i = 0; i < currentAnswer.length; i++) {
         answerArrayHidden.push("_")
@@ -51,11 +46,13 @@ function newWord() {
                             console.log(j)
                             correctGuess()
                             currentAnswerDisplayed.textContent = answerArrayHidden
-                            }
                         }
+                    }
                         if (answerArrayHidden.includes("_") === false) {
                             wins++;
                             winsText.textContent = wins;
+                            var audio = new Audio("assets/images/sound_win.mp3");
+                            audio.play();
                             newWord()
                         }
                     
@@ -69,14 +66,14 @@ function newWord() {
                     alreadyGuessedSpan.textContent = alreadyGuessed
                     console.log(alreadyGuessed)
                     if (guesses === 0) {
+                        var audio = new Audio("assets/images/sound_loss.wav");
+                        audio.play();
                         newWord()
                     }
-                }
+                    }
                 
                 }
             }
-    }
+        }
 }
-            
-
 newWord();
